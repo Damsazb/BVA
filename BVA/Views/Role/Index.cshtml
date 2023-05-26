@@ -1,0 +1,70 @@
+﻿@model IEnumerable<IdentityRole>
+<div class="container mt-3">
+    @if(User.IsInRole("Administrator")){
+    <div id="Add_someone">
+
+        @using (@Html.BeginForm("Add", "Role"))
+            {
+            <label placeholder="Role Name" class="control-label"></label>
+                <input type="text" class=" inputtext " name="Name" placeholder="Rollnamn" style="width:auto">
+                <input class="btn btn-primary" id="submit" type="submit" value="Lägg till">
+            }
+
+    </div>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+            </tr>
+            <tr>
+                <th>
+                    <a>Roll </a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+                 
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                        <td>
+                            @if (!item.Name.Equals("Administrator")){
+                                @Html.ActionLink("Radera", "Delete", new { item.Id },new {@class = "btn btn-danger btnma" })
+                            }
+                    </td>
+                </tr>
+                        
+                }
+        </tbody>
+    </table>
+        }
+    <div class="col-md-8">
+        <h1>Lägg till en roll till användaren</h1>
+        <form asp-action="AddUserRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+            <div class="form-group">
+                <label class="control-label">Användare</label>
+                <select name="UserName" class="form-control" asp-items="ViewBag.user"></select>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label">Roll</label>
+                <select name="Role" class="form-control" asp-items="ViewBag.Roles"></select>
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Lägg till" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    @Html.ActionLink("Visa användare och roll", "Show")
+</div>

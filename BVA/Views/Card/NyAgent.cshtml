@@ -1,0 +1,137 @@
+﻿@*@model Bovision.Customer
+<div class="container-fluid mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+               
+            </h5>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Besöks Adress</h5>
+                                        <label asp-for="Address1" class="control-label">Stad</label>
+                                        <input asp-for="Address1" class="form-control" />
+                                        <span asp-validation-for="Address1" class="text-danger"></span>
+                                        <label asp-for="Address2" class="control-label">Gata</label>
+                                        <input asp-for="Address2" class="form-control" />
+                                        <span asp-validation-for="Address2" class="text-danger"></span>
+                                        <label asp-for="Address3" class="control-label">Gata2</label>
+                                        <input asp-for="Address3" class="form-control" />
+                                        <span asp-validation-for="Address3" class="text-danger"></span>
+                                        <label asp-for="PostalCode" class="control-label">Post Kode</label>
+                                        <input asp-for="PostalCode" class="form-control" />
+                                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                        <label asp-for="PostalArea" class="control-label">Ort</label>
+                                        <input asp-for="PostalArea" class="form-control" />
+                                        <span asp-validation-for="PostalArea" class="text-danger"></span>
+                                        <label asp-for="CountryCode" class="control-label">Lands kod</label>
+                                        <input asp-for="CountryCode" class="form-control" />
+                                        <span asp-validation-for="CountryCode" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Fakturering Adress</h5>
+                                        <label asp-for="DeliveryAddress1" class="control-label">Stad</label>
+                                        <input asp-for="DeliveryAddress1" class="form-control" />
+                                        <span asp-validation-for="DeliveryAddress1" class="text-danger"></span>
+                                        <label asp-for="DeliveryAddress2" class="control-label">Gata</label>
+                                        <input asp-for="DeliveryAddress2" class="form-control" />
+                                        <span asp-validation-for="DeliveryAddress2" class="text-danger"></span>
+                                        <label asp-for="DeliveryAddress3" class="control-label">Gata2</label>
+                                        <input asp-for="DeliveryAddress3" class="form-control" />
+                                        <span asp-validation-for="DeliveryAddress3" class="text-danger"></span>
+                                        <label asp-for="DeliveryPostalCode" class="control-label">Post Kode</label>
+                                        <input asp-for="DeliveryPostalCode" class="form-control" />
+                                        <span asp-validation-for="DeliveryPostalCode" class="text-danger"></span>
+                                        <label asp-for="DeliveryPostalArea" class="control-label">Ort</label>
+                                        <input asp-for="DeliveryPostalArea" class="form-control" />
+                                        <span asp-validation-for="DeliveryPostalArea" class="text-danger"></span>
+                                        <label asp-for="DeliveryCountryCode" class="control-label">Lands kod</label>
+                                        <input asp-for="DeliveryCountryCode" class="form-control" />
+                                        <span asp-validation-for="DeliveryCountryCode" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Överigt</h5>
+                                    <label asp-for="Address1" class="control-label">Bv Mäklare</label>
+                                    <input asp-for="Address1" class="form-control" />
+                                    <span asp-validation-for="Address1" class="text-danger"></span>
+                                    <label asp-for="Address2" class="control-label">Blocket</label>
+                                    <input asp-for="Address2" class="form-control" />
+                                    <span asp-validation-for="Address2" class="text-danger"></span>
+                                    <label asp-for="Address3" class="control-label">Spesialavgift</label>
+                                    <input asp-for="Address3" class="form-control" />
+                                    <span asp-validation-for="Address3" class="text-danger"></span>
+                                    <label asp-for="PostalCode" class="control-label">Post Kode</label>
+                                    <input asp-for="PostalCode" class="form-control" />
+                                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+
+                           
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">information</h5>
+                            <label asp-for="ContactName" class="control-label">Kontakt</label>
+                            <input asp-for="ContactName" class="form-control" />
+                            <span asp-validation-for="ContactName" class="text-danger"></span>
+                            <label asp-for="Phone" class="control-label">Telefon</label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                            <label asp-for="Fax" class="control-label">Fax</label>
+                            <input asp-for="Fax" class="form-control" />
+                            <span asp-validation-for="Fax" class="text-danger"></span>
+                            <label asp-for="ContactEmail" class="control-label">Email kontakt</label>
+                            <input asp-for="ContactEmail" class="form-control" />
+                            <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                            <label asp-for="DeliveryPostalCode" class="control-label">Email Utskick</label>
+                            <input asp-for="DeliveryPostalCode" class="form-control" />
+                            <span asp-validation-for="DeliveryPostalCode" class="text-danger"></span>
+                            <label asp-for="Webadress" class="control-label">Webadress</label>
+                            <input asp-for="Webadress" class="form-control" />
+                            <span asp-validation-for="Webadress" class="text-danger"></span>
+                            <label asp-for="InvoiceEmail" class="control-label">Faktura per Epost</label>
+                            <input asp-for="InvoiceEmail" class="form-control" />
+                            <span asp-validation-for="InvoiceEmail" class="text-danger"></span>
+                            <label asp-for="VATno" class="control-label">VAT</label>
+                            <input asp-for="VATno" class="form-control" />
+                            <span asp-validation-for="VATno" class="text-danger"></span>
+                            <label asp-for="OrgNr" class="control-label">OrgNr</label>
+                            <input asp-for="OrgNr" class="form-control" />
+                            <span asp-validation-for="OrgNr" class="text-danger"></span>
+                            <label asp-for="Password" class="control-label">Password</label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <label asp-for="DeliveryCountryCode" class="control-label">Nykel</label>
+                            <input asp-for="DeliveryCountryCode" class="form-control" />
+                            <span asp-validation-for="DeliveryCountryCode" class="text-danger"></span>
+                            <label asp-for="DeliveryAddress1" class="control-label">Mäklare system</label>
+                            <input asp-for="DeliveryAddress1" class="form-control" />
+                            <span asp-validation-for="DeliveryAddress1" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>*@

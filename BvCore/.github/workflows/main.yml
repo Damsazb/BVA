@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build and push NuGet to GitHub Packages
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch: 
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.7
+      
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+      
+    - name: Prep packages
+      run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.NUGET_PACKAGES_TOKEN }} --store-password-in-clear-text --name BovisionNuget "https://nuget.pkg.github.com/Bovision/index.json"
+
+    - name: Restore Packages
+      run: nuget restore BvCore.sln
+
+    - name: Build Solution
+      run: dotnet build -c Release
+
+    - name: Pack NuGet 
+      run: dotnet pack -c Release -o nupkgs
+
+    - name: Publish to GitHub packages 
+      run: dotnet nuget push nupkgs\*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }}  --source BovisionNuget --skip-duplicate
+      if: github.ref == 'refs/heads/master'

@@ -1,0 +1,124 @@
+﻿@model BVA.Models.AnnonsViewModel
+
+@{
+    ViewData["Title"] = "New";
+    Layout = "_Layout";
+}
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-primary text-uppercase text-white">
+            <h4>Lägg till ny annons</h4>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="New">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Annonsör</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Place" class="control-label">plats</label>
+                            <select asp-for="Place" class="form-control">
+                                <option value="">Välj plats</option>
+                                <option value="List">List</option>
+                            </select>
+                            <span asp-validation-for="Place" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Publishing_date" class="control-label">Publiceringsdatum</label>
+                            <input asp-for="Publishing_date" class="form-control" />
+                            <span asp-validation-for="Publishing_date" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="End_date_of_publication" class="control-label">Slutdatum för publicering</label>
+                            <input asp-for="End_date_of_publication" class="form-control" />
+                            <span asp-validation-for="End_date_of_publication" class="text-danger"></span>
+                        </div>
+                    </div>   
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Priority" class="control-label">Prioritet</label>
+                            <select asp-for="Priority" class="form-control">
+                                <option value="">Välj prioritet</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                                <option value="3">C</option>
+                            </select>
+                            <span asp-validation-for="Priority" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Url" class="control-label">Annonslänk</label>
+                            <input asp-for="Url" class="form-control" />
+                            <span asp-validation-for="Url" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+
+
+  
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Image" class="control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="Image" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Välj ett foto (Size 600*250)</label>
+                            </div>
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                                <label asp-for="municipality" class="control-label">Välj ett kommun</label>
+                            <select asp-for="municipality" class="form-control">
+                                <option value="">Välj ett kommun</option>
+                                @foreach (var item in ViewBag.kommuner)
+                                    {
+                                    <option value="@item">@item</option>
+                                    }
+                            </select>
+                        
+                          
+                            <span asp-validation-for="municipality" class="text-danger"></span>
+                        </div>
+                    </div>
+                  
+                    </div>
+
+                
+                <div class="form-group">
+                    <input type="submit" value="Skicka in" class="btn btn-sm btn-primary rounded-0 text-uppercase" />
+                    <a asp-action="Index" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-fast-backward"></i> Tillbaka till listan</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

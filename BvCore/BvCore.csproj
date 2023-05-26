@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <AssemblyName>BvCore</AssemblyName>
+    <RootNamespace>BvCore</RootNamespace>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>BvCore</PackageId>
+    <Version>1.1.2</Version>
+    <AssemblyTitle>BvCore</AssemblyTitle>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <Authors>Ronny Carlansson</Authors>
+    <Copyright>Bovision �  2018</Copyright>
+    <Description>BvCore - part of BackEnd. INNERHÅLLER ALLT OCH LITE TILL!!!</Description>
+    <RepositoryUrl>git@github.com:Bovision/bvcore.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <!-- keep references unless they are to package files -->
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\base\Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AjaxPro">
+      <HintPath>..\..\..\..\..\..\g6f53er\Ny mapp\AjaxPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Bovision.IO">
+      <HintPath>..\..\..\..\..\..\g6f53er\Ny mapp\Bovision.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Bovision.Net">
+      <HintPath>..\..\..\..\..\..\g6f53er\Ny mapp\Bovision.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DataCore">
+      <HintPath>..\..\..\..\..\..\g6f53er\Ny mapp\DataCore.dll</HintPath>
+    </Reference>
+    <Reference Include="DomainModel">
+      <HintPath>..\..\..\..\..\..\g6f53er\Ny mapp\DomainModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Facade">
+      <HintPath>..\..\..\..\..\..\g6f53er\Ny mapp\Facade.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

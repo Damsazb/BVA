@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<meta name="viewport" content="width=device-width" />
+<title>Index</title>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(function () {
+        GetCustomers();
+        $("#myAutocomplete").keyup(function () {
+            GetCustomers();
+        });
+    });
+    function GetCustomers() {
+        var customerName = $.trim($("#myAutocomplete").val());
+        $.ajax({
+            type: "GET",
+            url: "/api/Agent/autocomplete",
+            data: jQuery.param({ id: customerName }),
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            success: function (customers) {
+                var table = $("#tblCustomers");
+                table.find("tr:not(:first)").remove();
+
+                var data = $.parseJSON(customers);
+                $.each(data, function (i, customer) {
+                    var table = $("#tblCustomers");
+                    var y = document.createElement("TR");
+                    var z = document.createElement("TD");
+                    var z2 = document.createElement("TD");
+                    var a = document.createElement("A");
+                    a.innerHTML = `<a href="Card/Show/${customer.id}">Öppna</a>`;
+                    z2.appendChild(a);
+                    z.innerHTML = customer.DisplayName;
+                    y.appendChild(z);
+                    y.appendChild(z2)
+                    document.getElementById("tblCustomers").appendChild(y);
+                });
+            }
+        });
+    }
+</script>
+<div hidden>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Sök efter mäklare</label>
+                <input id="myAutocomplete" type="text" class="form-control">
+            </div>
+        </div>
+           
+    </div>
+</div>
+<table class="table table-bordered table-striped" id="tblCustomers" c>
+        <tr>
+            <th>CustomerID</th>
+        <th>Kound kort</th>
+        </tr>
+    </table>
+</div>

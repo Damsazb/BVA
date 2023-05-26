@@ -1,0 +1,60 @@
+﻿
+@model List<UserRole>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Användar ID
+            </th>
+            <th>
+                Användarnamn
+            </th>
+            <th>
+                Roller
+            </th>
+            <th>
+                Ta bort användare
+            </th>
+             <th>
+                Återställ lösenord
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+                <td>
+                    <a>Ta bort</a>
+                    @if (User.Identity.Name != item.UserName)
+                        {
+                    @foreach (var Role in item.Roles)
+                        {
+
+                        <a asp-action="DeleteRoleUser" asp-route-Role="@Role" asp-route-UserId=@item.UserId class="btn btn-danger">@Role </a>
+                        }
+                        }
+                </td>
+                <td>
+                    @if (User.Identity.Name != item.UserName && User.IsInRole("Administrator")){
+                        <a asp-action="DeleteUser" asp-route-UserId=@item.UserId class="btn btn-danger">Radera </a>
+                        }
+                </td>
+                <td>
+                    @if (User.Identity.Name != item.UserName)
+                        {
+                        <a asp-action="ResetPassword" asp-route-UserId=@item.UserId class="btn btn-danger">Återställ lösenordet till "1" </a>
+                        }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a asp-action="Index">Gå till Rollhantering</a>

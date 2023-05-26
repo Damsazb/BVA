@@ -1,0 +1,326 @@
+﻿@*@using Bovision;*@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Info</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">List</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Order</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Note-tab" data-bs-toggle="tab" data-bs-target="#Note" type="button" role="tab" aria-controls="Note" aria-selected="false">Note</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Note-tab" data-bs-toggle="tab" data-bs-target="#invoices" type="button" role="tab" aria-controls="invoices" aria-selected="false">invoices</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Note-tab" data-bs-toggle="tab" data-bs-target="#Logotype" type="button" role="tab" aria-controls="Logotype" aria-selected="false">Logotype</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+<div class="container-fluid mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                @Model.Name Kund NR :@Model.Id
+            </h5>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Besöks Adress</h5>
+
+                                        <label>Stad</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.Address1" aria-label=".form-control-lg example">
+                                        <label>Gata</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.Address2" aria-label=".form-control-lg example">
+                                        <label>Gata2</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.Address3" aria-label=".form-control-lg example">
+                                        <label>Post Kode</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.PostalCode" aria-label=".form-control-lg example">
+                                        <label>Ort</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.PostalArea" aria-label=".form-control-lg example">
+                                        <label>Lands kod</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.CountryCode" aria-label=".form-control-lg example">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Fakturering Adress</h5>
+
+                                        <label>Stad</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.DeliveryAddress1" aria-label=".form-control-lg example">
+                                        <label>Gata</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.DeliveryAddress2" aria-label=".form-control-lg example">
+                                        <label>Gata2</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.DeliveryAddress3" aria-label=".form-control-lg example">
+                                        <label>Post Kode</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.DeliveryPostalCode" aria-label=".form-control-lg example">
+                                        <label>Ort</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.DeliveryPostalArea" aria-label=".form-control-lg example">
+                                        <label>Lands kod</label>
+                                        <input class="form-control form-control-lg" type="text" value="@Model.DeliveryCountryCode" aria-label=".form-control-lg example">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Överigt</h5>
+
+                                    <label>Bv Mäklare</label>
+                                            <select class="form-select" aria-label="Default select example" asp-items="@ViewBag.items">
+                                                <option selected>Open this select menu</option>
+
+                                            </select>
+                                            <label>Bovision</label>
+                                            <input class="form-check-input" type="checkbox" checked="@ViewBag.BChecked">
+                                            <label>&emsp;Spesialavgift</label>
+                                            <input class="form-check-input" type="checkbox" value="@Model.Address3">
+                                            <br />
+                                    <label>Rabatt %</label>
+                                    <input class="form-control form-control-lg" type="text" value="@Model.PostalCode" aria-label=".form-control-lg example">
+                                    @{
+                                        string href = "http://bovision.se/Maklare/VisaMaklare/" + Model.Id;
+                                        string ROlink = "http://regonline.bovision.se/RegOnline/?" + ViewBag.cript;
+
+                                    }
+                                    <a href="@href" class="card-link">Visa på Bovision.se</a>
+                                    <a href="@ROlink" class="card-link">till RegOnline</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">information</h5>
+                            <label>Kontakt</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.ContactName" aria-label=".form-control-lg example">
+                            <label>Telefon</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.Phone" aria-label=".form-control-lg example">
+                            <label>Fax</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.Fax" aria-label=".form-control-lg example">
+                            <label>Email kontakt</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.ContactEmail" aria-label=".form-control-lg example">
+                            <label>Email Utskick</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.DeliveryPostalCode" aria-label=".form-control-lg example">
+                            <label>Webadress</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.Webadress" aria-label=".form-control-lg example">
+                            <label>Faktura per Epost</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.InvoiceEmail" aria-label=".form-control-lg example">
+                            <label>VAT</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.VATno" aria-label=".form-control-lg example">
+                            <label>OrgNr</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.OrgNr" aria-label=".form-control-lg example">
+                            <label>Password</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.Password" aria-label=".form-control-lg example">
+                            <label>Nykel</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.DeliveryCountryCode" aria-label=".form-control-lg example">
+                            <label>Mäklare system</label>
+                            <input class="form-control form-control-lg" type="text" value="@Model.DeliveryAddress1" aria-label=".form-control-lg example">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+     
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>ClientId</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Type</th>
+                    <th>Rent</th>
+                    <th>Price</th>
+                    <th>Currency</th>
+                    <th>link</th>
+                    <th>Xml</th>
+                    <th>Ta bort</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                @foreach (var annons in ViewBag.src)
+                    {
+                    <tr>
+ 
+                        <td>@annons.Id</td>
+                        <td>@annons.ClientId</td>
+                        <td>@annons.Address</td>
+                        <td>@annons.City</td>
+                        <td>@annons.Type</td>
+                        <td>@annons.Rent</td>
+                        <td>@annons.Price</td>
+                        <td>@annons.Currency</td>
+                        <td><a href="@annons.Url">link</a> </td>
+                        <td><a href="@annons.Xml">Xml</a> </td>
+
+                        <td>
+                            <a class="btn btn-danger" asp-action="LDelete" asp-route-customerid="@Model.Id" asp-route-annonsid="@annons.Id">Ta bort</a>
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-danger disabled" asp-controller="Adds" asp-action="Editor"  asp-route-id="@annons.Id">Edit</a>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product</th>
+                    <th>Contract Starts</th>
+                    <th>Contract Ends</th>
+                    <th>Fakturacykler</th>
+                    <th>IsActive</th>
+                    <th>ByWho</th>
+                    <th>Ta bort</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var order in ViewBag.ao)
+                    {
+                    <tr>
+
+                        <td>@order.Id</td>
+                        <td>@order.Product</td>
+                        <td>@order.ContractStarts</td>
+                        <td>@order.ContractEnds</td>
+                        <td>@order.InvoiceCyclesInMonths</td>
+                        <td>@order.IsActive()
+                        <td>@order.ByWho</td>
+                        <td>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@order.Id">Ta bort</a>
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-danger" asp-controller="Adds" asp-action="Editor" asp-route-id="@order.Id">Edit</a>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="Note" role="tabpanel" aria-labelledby="Note-tab">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Created</th>
+                    <th>CreatedBy</th>
+                    <th>Text</th>
+                    <th>Deleted</th>
+                    <th>Ta bort</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var order in ViewBag.notes)
+                    {
+                    <tr>
+
+                        <td>@order.Id</td>
+                        <td>@order.Created</td>
+                        <td>@order.CreatedBy</td>
+                        <td>@order.Text</td>
+                        <td>@order.Deleted</td>
+
+                        <td>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@order.Id">Ta bort</a>
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-danger" asp-controller="Adds" asp-action="Editor" asp-route-id="@order.Id">Edit</a>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="Note-tab">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th>DueDate</th>
+                    <th>ExpFee</th>
+                    <th>Sum</th>
+                      <th>TotalSum</th>
+                    <th>Ta bort</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var order in ViewBag.invoices)
+                    {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.Type.Name</td>
+                        <td>@order.Created</td>
+                        <td>@order.DueDate</td>
+                        <td>@order.ExpFee</td>
+                        <td>@order.Sum</td>
+                        <td>@order.TotalSum</td>
+                        <td>@order.ExternalId</td>
+                        <td>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@order.Id">Ta bort</a>
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-danger" asp-controller="Adds" asp-action="Editor" asp-route-id="@order.Id">Edit</a>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="Logotype" role="tabpanel" aria-labelledby="Note-tab">
+        <img src="@Model.Logotype" />
+    </div>
+</div>*@
