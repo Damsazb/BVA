@@ -101,6 +101,16 @@ namespace BVA.Controllers
                 await _dbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
                 }
+            string Folder = Path.Combine(_webHostEnvironment.WebRootPath, "Data\\kommuner.json");
+
+            using (StreamReader r2 = new StreamReader(Folder))
+                {
+                string json2 = r2.ReadToEnd();
+                r2.Close();
+                ViewBag.kommuner = JsonConvert.DeserializeObject<List<string>>(json2);
+                //   ViewBag.agent = JsonConvert.DeserializeObject<List<Agentslist>>(json).GroupBy(x => x.Agentname).Select(gr => new { CellID = gr.FirstOrDefault().AgentId, Count = gr.Count(), Agentname = gr.FirstOrDefault().Agentname, Ispayer = gr.FirstOrDefault().Ispayed.Equals("true"), System = gr.FirstOrDefault().System }).ToList().OrderByDescending(x => x.Count).ToList();
+
+                }
             return View();
             }
         [HttpPost]
@@ -156,7 +166,7 @@ namespace BVA.Controllers
                 img.Dispose();
                 //save new image
                 // System.IO.File.Delete(filePath);
-                newImg.SaveAs(filePath);
+              //  newImg.SaveAs(filePath);
 
             //dispose to free up memory
 

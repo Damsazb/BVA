@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Http;
 namespace BVA.Models
 {
  
-    public class AnnonsViewModel
-    {
+    public class AnnonsViewModel 
+        {
      
         [Required(ErrorMessage = "Ange namnet på annonsören")]
         [Display(Name = "Name")]

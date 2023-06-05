@@ -21,11 +21,17 @@ namespace BVA.Controllers
 
             return Ok(_dbContext.Annons.Where(m=>m.Enable==true && m.Publishing_date.Date <= DateTime.Now.Date && m.End_date_of_publication.Date>= DateTime.Now.Date).OrderBy(m=>m.Priority).ThenByDescending (m=>m.Publishing_date).ToList());
             }
-        [HttpGet]
+        [HttpGet("new")]
         public ActionResult Adds(string municipality)
             {
 
             return Ok(_dbContext.Annons.Where(m => m.Enable == true && m.Publishing_date.Date <= DateTime.Now.Date && m.End_date_of_publication.Date >= DateTime.Now.Date&&(m.municipality.ToLower().Equals(municipality.ToLower())|| m.municipality.Equals("Hela Sverige"))).OrderBy(m => m.Priority).ThenByDescending(m => m.Publishing_date).ToList());
+            }
+        [HttpGet("AddsDev")]
+        public ActionResult AddsDev()
+            {
+
+            return Ok(_dbContext.Annons.ToList());
             }
         }
     }
