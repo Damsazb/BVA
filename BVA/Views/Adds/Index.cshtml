@@ -8,17 +8,28 @@
   <script>
     $(document).ready(function () {
       $('input:checkbox').change(function() {
-  $('#console-event').html('Toggle: ' + $(this).prop('checked'));
             console.log("Change event: " + this.id+ $(this).prop('checked'));
+            console.log(this.name)
+            if (this.name==='Prod')
             $.ajax({
                 type: "Post",
-                url: "@Url.Action("checkbox")",
+                    url: "@Url.Action("checkboxProd")",
                 data: { id: this.id, val: $(this).prop('checked') },
                 success: function (result) {
-                    $("#containera").html(result)
+                        console.log("success")
                 },
                 error: function (req, status, error) { console.log(status) }
             });
+            else
+                $.ajax({
+                    type: "Post",
+                    url: "@Url.Action("checkboxTest")",
+                    data: { id: this.id, val: $(this).prop('checked') },
+                    success: function (result) {
+                        console.log("success")
+                    },
+                    error: function (req, status, error) { console.log(status) }
+                });
 })
     });
   </script>
@@ -39,7 +50,8 @@
         <th>@Html.DisplayNameFor(model => model.Url)</th>
         <th>Delete</th>
             <th>Edit</th>
-         <th>Aktiv</th>
+         <th>Prod</th>
+            <th>Test</th>
     </tr>  
     </thead>  
     <tbody>  
@@ -70,11 +82,18 @@
             </td> 
             <td>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="@annons.Id" checked="@annons.Enable">
+                        <input class="form-check-input" name="Prod" type="checkbox" id="@annons.Id" checked="@annons.Enable">
                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                     </div>
                  
-            </td> 
+            </td>
+                <td>
+                    <div class="form-check form-switch ">
+                        <input class="form-check-input Test" Name="Test" type="checkbox" id="@annons.Id" checked="@annons.TestEnable">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                    </div>
+
+                </td>
         </tr>  
     }  
     </tbody>  

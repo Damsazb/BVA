@@ -47,6 +47,9 @@ namespace BVA.Models
         [Required(ErrorMessage = "Aktiv")]
         [Display(Name = "Aktiv")]
         public bool Enable { get; set; }
+        [Required(ErrorMessage = "Aktiv")]
+        [Display(Name = "Aktiv")]
+        public bool TestEnable { get; set; }
 
         public Annons()
         {

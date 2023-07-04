@@ -197,10 +197,17 @@ namespace BVA.Controllers
             return RedirectToAction(nameof(Index));
             }
         [HttpPost]
-        public async Task checkbox(int id , bool val)
+        public async Task checkboxProd(int id , bool val)
             {
             var model = await _dbContext.Annons.FindAsync(id);
             model.Enable=val;
+            _dbContext.Update(model);
+            await _dbContext.SaveChangesAsync();
+            }
+        public async Task checkboxTest(int id, bool val)
+            {
+            var model = await _dbContext.Annons.FindAsync(id);
+            model.TestEnable = val;
             _dbContext.Update(model);
             await _dbContext.SaveChangesAsync();
             }
